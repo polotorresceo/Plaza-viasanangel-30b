@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎉 ¡Celebra tu Cumpleaños en VIPS! 🎂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --rojo: #C8102E;
+      --rojo-oscuro: #9B0B21;
+      --amarillo: #FFD700;
+      --crema: #FFF8F0;
+      --gris-claro: #f5f5f5;
+      --texto: #1a1a1a;
+      --blanco: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--crema);
+      color: var(--texto);
+      overflow-x: hidden;
+    }
+
+    /* ═══════════════════════════════════════
+       HEADER / HERO
+    ═══════════════════════════════════════ */
+    header {
+      background: var(--rojo);
+      text-align: center;
+      padding: 18px 20px 12px;
+      position: relative;
+      overflow: hidden;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 5px;
+      background: repeating-linear-gradient(90deg, var(--amarillo) 0, var(--amarillo) 10px, transparent 10px, transparent 20px);
+    }
+
+    .logo-vips {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--blanco);
+      letter-spacing: 8px;
+      text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+    }
+
+    .header-tagline {
+      color: var(--amarillo);
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* ═══════════════════════════════════════
+       HERO SECTION CON EFECTO SCANNER
+    ═══════════════════════════════════════ */
+    .hero {
+      position: relative;
+      background: var(--rojo);
+      overflow: hidden;
+      min-height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Contenedor de la foto hero con efecto scanner */
+    .hero-img-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .hero-img-wrapper img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      max-height: 340px;
+      filter: brightness(0.75) saturate(1.1);
+    }
+
+    /* Scanner line */
+    .hero-img-wrapper::after {
+      content: '';
+      position: absolute;
+      top: -8%;
+      left: 0;
+      width: 100%;
+      height: 8%;
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0, 255, 120, 0.18) 30%,
+        rgba(0, 255, 120, 0.55) 50%,
+        rgba(0, 255, 120, 0.18) 70%,
+        transparent 100%
+      );
+      animation: scanner 2.8s ease-in-out infinite;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    /* Líneas horizontales suaves tipo pantalla */
+    .hero-img-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 3px,
+        rgba(0,0,0,0.06) 3px,
+        rgba(0,0,0,0.06) 4px
+      );
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    @keyframes scanner {
+      0%   { top: -8%; }
+      100% { top: 108%; }
+    }
+
+    /* Corner brackets */
+    .hero-corners {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      pointer-events: none;
+    }
+    .hero-corners span {
+      position: absolute;
+      width: 28px; height: 28px;
+      border-color: rgba(0,255,120,0.7);
+      border-style: solid;
+    }
+    .hero-corners span:nth-child(1) { top: 10px; left: 10px; border-width: 3px 0 0 3px; }
+    .hero-corners span:nth-child(2) { top: 10px; right: 10px; border-width: 3px 3px 0 0; }
+    .hero-corners span:nth-child(3) { bottom: 10px; left: 10px; border-width: 0 0 3px 3px; }
+    .hero-corners span:nth-child(4) { bottom: 10px; right: 10px; border-width: 0 3px 3px 0; }
+
+    /* Hero text overlay */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding-bottom: 28px;
+      background: linear-gradient(to top, rgba(150,8,24,0.82) 0%, transparent 55%);
+    }
+    .hero-overlay h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 5vw, 2.6rem);
+      color: var(--blanco);
+      text-align: center;
+      line-height: 1.2;
+      text-shadow: 1px 2px 6px rgba(0,0,0,0.5);
+      padding: 0 16px;
+    }
+    .hero-overlay p {
+      color: var(--amarillo);
+      font-size: 0.9rem;
+      margin-top: 8px;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+
+    /* Placeholder hero cuando no hay foto */
+    .hero-placeholder {
+      width: 100%;
+      min-height: 260px;
+      background: linear-gradient(135deg, #9B0B21 0%, #C8102E 50%, #9B0B21 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-placeholder .hero-icon {
+      font-size: 5rem;
+      opacity: 0.35;
+    }
+
+    /* ═══════════════════════════════════════
+       BADGE MES
+    ═══════════════════════════════════════ */
+    .mes-badge {
+      background: var(--amarillo);
+      color: var(--rojo-oscuro);
+      text-align: center;
+      padding: 10px 16px;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ═══════════════════════════════════════
+       SECTION GENÉRICA
+    ═══════════════════════════════════════ */
+    section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 36px 20px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      color: var(--rojo);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: #555;
+      font-size: 0.95rem;
+      margin-bottom: 28px;
+    }
+    .divider {
+      display: flex; align-items: center; gap: 12px;
+      margin: 0 auto 28px;
+      max-width: 340px;
+    }
+    .divider span { flex: 1; height: 1px; background: #ddd; }
+    .divider i { color: var(--rojo); font-size: 1rem; }
+
+    /* ═══════════════════════════════════════
+       CTA WHATSAPP  (mejorado)
+    ═══════════════════════════════════════ */
+    .cta-box {
+      background: var(--blanco);
+      border-radius: 16px;
+      padding: 30px 24px;
+      text-align: center;
+      box-shadow: 0 4px 24px rgba(200,16,46,0.10);
+      border: 2px solid #f0e0e3;
+      margin-bottom: 0;
+    }
+    .cta-box p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #444;
+      margin-bottom: 22px;
+    }
+    .cta-box strong {
+      color: var(--rojo);
+    }
+
+    /* Botón WhatsApp */
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: #fff;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 15px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      box-shadow: 0 6px 20px rgba(37,211,102,0.35);
+      transition: transform 0.18s, box-shadow 0.18s;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-wa::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.18) 50%, transparent 70%);
+      transform: translateX(-100%);
+      transition: transform 0.45s;
+    }
+    .btn-wa:hover::before { transform: translateX(100%); }
+    .btn-wa:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(37,211,102,0.45);
+    }
+    .btn-wa svg { width: 22px; height: 22px; fill: #fff; flex-shrink: 0; }
+
+    /* Botón rojo principal */
+    .btn-rojo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--rojo);
+      color: #fff;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 15px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      box-shadow: 0 6px 20px rgba(200,16,46,0.30);
+      transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-rojo::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
+      transform: translateX(-100%);
+      transition: transform 0.45s;
+    }
+    .btn-rojo:hover::before { transform: translateX(100%); }
+    .btn-rojo:hover {
+      background: var(--rojo-oscuro);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(200,16,46,0.40);
+    }
+
+    /* Botón amarillo */
+    .btn-amarillo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--amarillo);
+      color: var(--rojo-oscuro);
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 15px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      box-shadow: 0 6px 20px rgba(255,215,0,0.35);
+      transition: transform 0.18s, box-shadow 0.18s;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-amarillo:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(255,215,0,0.50);
+    }
+
+    /* ═══════════════════════════════════════
+       MENU CARDS (platillos)
+    ═══════════════════════════════════════ */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 22px;
+      margin-top: 4px;
+    }
+
+    .menu-card {
+      background: var(--blanco);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 3px 18px rgba(0,0,0,0.07);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid rgba(200,16,46,0.08);
+    }
+    .menu-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(200,16,46,0.14);
+    }
+    .menu-card img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      display: block;
+    }
+    .menu-card .img-placeholder {
+      width: 100%;
+      height: 210px;
+      background: linear-gradient(135deg, #ffe0e5, #fff5f6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+    .card-body {
+      padding: 16px 18px 20px;
+    }
+    .card-badge {
+      display: inline-block;
+      background: #fff0f2;
+      color: var(--rojo);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+    }
+    .card-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--texto);
+      margin-bottom: 6px;
+    }
+    .card-body p {
+      font-size: 0.88rem;
+      color: #666;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .card-price {
+      font-weight: 700;
+      color: var(--rojo);
+      font-size: 1rem;
+    }
+
+    /* ═══════════════════════════════════════
+       SECCIÓN TESTIMONIOS
+    ═══════════════════════════════════════ */
+    .testimonios-bg {
+      background: linear-gradient(135deg, var(--rojo) 0%, var(--rojo-oscuro) 100%);
+      padding: 48px 0;
+    }
+    .testimonios-bg .section-title { color: var(--blanco); }
+    .testimonios-bg .section-subtitle { color: rgba(255,255,255,0.75); }
+
+    .testimonios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 18px;
+      margin-top: 4px;
+    }
+
+    .testimonio-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 14px;
+      padding: 20px;
+      backdrop-filter: blur(6px);
+    }
+    .testimonio-card .stars { color: var(--amarillo); font-size: 1rem; margin-bottom: 10px; }
+    .testimonio-card p { color: rgba(255,255,255,0.9); font-size: 0.9rem; line-height: 1.55; font-style: italic; margin-bottom: 12px; }
+    .testimonio-card .autor { color: var(--amarillo); font-weight: 700; font-size: 0.85rem; }
+
+    /* ═══════════════════════════════════════
+       ⭐ SECCIÓN PROMOCIONES ABRIL 2026 (NUEVA)
+    ═══════════════════════════════════════ */
+    .promo-abril-bg {
+      background: #fff7f0;
+      padding: 48px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .promo-abril-bg::before {
+      content: '🌸';
+      position: absolute;
+      font-size: 9rem;
+      opacity: 0.06;
+      top: -20px;
+      right: -20px;
+      pointer-events: none;
+    }
+    .promo-abril-bg::after {
+      content: '🌸';
+      position: absolute;
+      font-size: 9rem;
+      opacity: 0.06;
+      bottom: -20px;
+      left: -20px;
+      pointer-events: none;
+    }
+
+    .promo-banner {
+      background: linear-gradient(135deg, var(--rojo) 0%, #e83353 100%);
+      border-radius: 18px;
+      padding: 24px 28px;
+      margin-bottom: 28px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 6px 24px rgba(200,16,46,0.22);
+    }
+    .promo-banner::before {
+      content: '';
+      position: absolute;
+      top: -30px; right: -30px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+    }
+    .promo-banner .badge-nuevo {
+      display: inline-block;
+      background: var(--amarillo);
+      color: var(--rojo-oscuro);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+    .promo-banner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.65rem;
+      color: var(--blanco);
+      margin-bottom: 6px;
+    }
+    .promo-banner p {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.95rem;
+    }
+
+    .promo-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 18px;
+    }
+
+    .promo-card {
+      background: var(--blanco);
+      border-radius: 16px;
+      padding: 22px 20px;
+      box-shadow: 0 3px 16px rgba(0,0,0,0.07);
+      border-left: 5px solid var(--rojo);
+      transition: transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .promo-card::after {
+      content: attr(data-emoji);
+      position: absolute;
+      bottom: -8px; right: 10px;
+      font-size: 3.5rem;
+      opacity: 0.12;
+      pointer-events: none;
+    }
+    .promo-card:hover { transform: translateY(-4px); }
+
+    .promo-card.promo-dorado { border-left-color: #D4A017; }
+    .promo-card.promo-verde  { border-left-color: #2eaa5e; }
+
+    .promo-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.08rem;
+      margin-bottom: 8px;
+      color: var(--texto);
+    }
+    .promo-card .promo-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+    .promo-tag.tag-rojo  { background: #fff0f2; color: var(--rojo); }
+    .promo-tag.tag-oro   { background: #fff8e1; color: #b5860d; }
+    .promo-tag.tag-verde { background: #e8f5e9; color: #2e7d32; }
+
+    .promo-card p { font-size: 0.9rem; color: #555; line-height: 1.55; margin-bottom: 10px; }
+    .promo-price  { font-weight: 700; color: var(--rojo); font-size: 1.05rem; }
+    .promo-card.promo-dorado .promo-price { color: #b5860d; }
+    .promo-card.promo-verde  .promo-price { color: #2e7d32; }
+
+    .promo-vigencia {
+      font-size: 0.78rem;
+      color: #999;
+      margin-top: 6px;
+    }
+
+    /* ═══════════════════════════════════════
+       SECCIÓN CUMPLEAÑOS / CELEBRACIÓN
+    ═══════════════════════════════════════ */
+    .celebra-bg {
+      background: var(--gris-claro);
+      padding: 48px 0;
+    }
+    .pasos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .paso-card {
+      text-align: center;
+      background: var(--blanco);
+      border-radius: 14px;
+      padding: 24px 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .paso-num {
+      width: 44px; height: 44px;
+      background: var(--rojo);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 1.1rem;
+      margin: 0 auto 12px;
+    }
+    .paso-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      margin-bottom: 6px;
+      color: var(--texto);
+    }
+    .paso-card p { font-size: 0.85rem; color: #666; line-height: 1.5; }
+
+    /* ═══════════════════════════════════════
+       FAQ
+    ═══════════════════════════════════════ */
+    .faq-list { list-style: none; padding: 0; }
+    .faq-list li {
+      background: var(--blanco);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      border-left: 4px solid var(--rojo);
+    }
+    .faq-list li strong {
+      display: block;
+      color: var(--rojo);
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+    }
+    .faq-list li span { font-size: 0.9rem; color: #555; line-height: 1.55; }
+
+    /* ═══════════════════════════════════════
+       CTA FINAL GRANDE
+    ═══════════════════════════════════════ */
+    .cta-final {
+      background: linear-gradient(135deg, #9B0B21 0%, #C8102E 60%, #e83353 100%);
+      padding: 60px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-final::before {
+      content: '🎂';
+      position: absolute;
+      font-size: 14rem;
+      opacity: 0.05;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .cta-final h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      color: var(--blanco);
+      margin-bottom: 12px;
+    }
+    .cta-final p {
+      color: rgba(255,255,255,0.85);
+      font-size: 1.05rem;
+      max-width: 480px;
+      margin: 0 auto 30px;
+      line-height: 1.6;
+    }
+    .cta-final .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+    }
+
+    /* ═══════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════ */
+    footer {
+      background: #1a1a1a;
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 0.82rem;
+    }
+    footer strong { color: var(--amarillo); }
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════ */
+    @media (max-width: 500px) {
+      .logo-vips { font-size: 2rem; }
+      .menu-grid, .promo-cards, .pasos-grid, .testimonios-grid { grid-template-columns: 1fr; }
+      .btn-wa, .btn-rojo, .btn-amarillo { font-size: 0.95rem; padding: 13px 24px; }
+    }
+
+    /* ═══════════════════════════════════════
+       PULSE ANIMATION para el badge nuevo
+    ═══════════════════════════════════════ */
+    @keyframes pulse-badge {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+    }
+    .badge-nuevo { animation: pulse-badge 1.8s ease-in-out infinite; }
+
+    /* Scroll-reveal sutil */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.65s ease both; }
+    .fade-up-2 { animation: fadeUp 0.65s 0.15s ease both; }
+    .fade-up-3 { animation: fadeUp 0.65s 0.30s ease both; }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ HEADER ═══ -->
+  <header>
+    <div class="logo-vips">VIPS</div>
+    <p class="header-tagline">Restaurante • Tradición • Sabor Mexicano</p>
+  </header>
+
+  <!-- ═══ HERO CON EFECTO SCANNER ═══ -->
+  <div class="hero">
+    <div class="hero-img-wrapper">
+
+      <!-- 
+        ════════════════════════════════════════════════════════
+        📌 FOTO PRINCIPAL DE PORTADA
+        Sube tu imagen a imgbb.com y reemplaza el src abajo.
+        Tamaño recomendado: 1200×480px
+        ════════════════════════════════════════════════════════
+      -->
+      <div class="hero-placeholder">
+        <span class="hero-icon">🍽️</span>
+      </div>
+      <!-- <img src="URL_DE_TU_IMAGEN_PRINCIPAL_AQUI" alt="VIPS – Cumpleaños y Celebraciones" /> -->
+
+      <div class="hero-corners">
+        <span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <div class="hero-overlay">
+      <h1 class="fade-up">🎉 ¡Celebra tu Cumpleaños con Nosotros! 🎂</h1>
+      <p class="fade-up-2">Haz de tu día especial una experiencia inolvidable</p>
+    </div>
+  </div>
+
+  <!-- ═══ BADGE MES ═══ -->
+  <div class="mes-badge">🌸 Promociones Especiales · Abril 2026 🌸</div>
+
+  <!-- ═══════════════════════════════════════════
+       SECCIÓN: WHATSAPP / MENÚ PERSONALIZADO
+  ════════════════════════════════════════════ -->
+  <section style="padding-top:44px; padding-bottom:0;">
+    <h2 class="section-title fade-up">🎊 ¡Tu Próxima Fiesta Empieza Aquí! 🎊</h2>
+    <p class="section-subtitle">Gracias por visitar VIPS. Queremos ser parte de tu próxima celebración especial.</p>
+    <div class="cta-box fade-up-2">
+      <p>
+        <strong>📅 Envíanos tu nombre y fecha de cumpleaños por WhatsApp</strong><br />
+        y te enviaremos un menú personalizado para tu festejo
+      </p>
+      <a href="https://wa.me/521XXXXXXXXXX?text=Hola%20VIPS!%20Quiero%20celebrar%20mi%20cumplea%C3%B1os%20%F0%9F%8E%82"
+         class="btn-wa" target="_blank">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 .5C7.438.5.5 7.438.5 16c0 2.844.75 5.516 2.063 7.844L.5 31.5l7.875-2.031A15.46 15.46 0 0016 31.5C24.563 31.5 31.5 24.563 31.5 16S24.563.5 16 .5zm0 28.25a13.7 13.7 0 01-7.063-1.969l-.5-.3-5.219 1.344 1.375-5.063-.344-.531A13.712 13.712 0 012.25 16C2.25 8.406 8.406 2.25 16 2.25S29.75 8.406 29.75 16 23.594 28.75 16 28.75zm7.5-10.344c-.406-.203-2.422-1.188-2.797-1.328-.375-.141-.656-.203-.922.203s-1.063 1.328-1.297 1.594-.484.313-.891.094c-.406-.219-1.719-.625-3.281-2a12.16 12.16 0 01-2.266-2.797c-.234-.406-.025-.625.172-.828.188-.188.406-.484.609-.734.203-.25.266-.406.406-.688.141-.266.063-.5-.031-.703-.094-.203-.922-2.203-1.266-3.016-.328-.797-.672-.672-.922-.688-.234-.016-.5-.016-.766-.016a1.484 1.484 0 00-1.063.5c-.359.391-1.391 1.344-1.391 3.281s1.422 3.797 1.625 4.063c.203.281 2.797 4.234 6.813 5.922 4.031 1.688 4.031 1.125 4.766 1.063.719-.063 2.406-.984 2.75-1.938.328-.953.328-1.766.234-1.938-.094-.172-.375-.281-.781-.484z"/>
+        </svg>
+        Enviar WhatsApp Ahora
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SECCIÓN: MENÚ CELEBRACIÓN
+  ════════════════════════════════════════════ -->
+  <section style="padding-top:48px;">
+    <h2 class="section-title">Una Mesa <em>Inolvidable</em> Te Espera</h2>
+    <div class="divider"><span></span><i>◆</i><span></span></div>
+    <p class="section-subtitle">Cada platillo preparado con los mejores ingredientes para hacer de tu cumpleaños una experiencia única.</p>
+
+    <div class="menu-grid">
+
+      <!-- Platillo 1 -->
+      <div class="menu-card">
+        <img src="https://i.ibb.co/4RkD3gD/enchiladas-suizas.jpg"
+             alt="Enchiladas Suizas VIPS"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="img-placeholder" style="display:none;">🌮</div>
+        <div class="card-body">
+          <span class="card-badge">Clásico Mexicano</span>
+          <h3>Enchiladas Suizas</h3>
+          <p>El platillo más querido de VIPS. Tortillas bañadas en salsa verde con crema, queso y pollo desmenuzado.</p>
+          <div class="card-price">Desde <strong>$189 MXN</strong></div>
+        </div>
+      </div>
+
+      <!-- Platillo 2 -->
+      <div class="menu-card">
+        <img src="https://i.ibb.co/hamburguesa-clasica.jpg"
+             alt="Hamburguesa Clásica VIPS"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="img-placeholder" style="display:none;">🍔</div>
+        <div class="card-body">
+          <span class="card-badge">Favorito</span>
+          <h3>Hamburguesa Clásica</h3>
+          <p>Jugosa carne de res, queso cheddar derretido, lechuga, jitomate y nuestras salsas especiales en pan artesanal.</p>
+          <div class="card-price">Desde <strong>$209 MXN</strong></div>
+        </div>
+      </div>
+
+      <!-- Platillo 3 -->
+      <div class="menu-card">
+        <div class="img-placeholder">🥞</div>
+        <div class="card-body">
+          <span class="card-badge">Desayuno Especial</span>
+          <h3>Hot Cakes de Cumpleaños</h3>
+          <p>Esponjosos hot cakes decorados para tu festejo, acompañados de fruta, crema y miel de maple.</p>
+          <div class="card-price">Desde <strong>$159 MXN</strong></div>
+        </div>
+      </div>
+
+      <!-- Platillo 4 -->
+      <div class="menu-card">
+        <div class="img-placeholder">🍰</div>
+        <div class="card-body">
+          <span class="card-badge">Postre Estrella</span>
+          <h3>Pastel de Chocolate VIPS</h3>
+          <p>Nuestro icónico pastel de tres leches y chocolate, el favorito para cerrar con broche de oro tu festejo.</p>
+          <div class="card-price">Desde <strong>$89 MXN</strong> por porción</div>
+        </div>
+      </div>
+
+      <!-- Platillo 5 -->
+      <div class="menu-card">
+        <div class="img-placeholder">🫔</div>
+        <div class="card-body">
+          <span class="card-badge">Nuevo</span>
+          <h3>Quesadillas de Huitlacoche</h3>
+          <p>Tortillas de maíz rellenas de huitlacoche con queso Oaxaca, servidas con guacamole y crema.</p>
+          <div class="card-price">Desde <strong>$149 MXN</strong></div>
+        </div>
+      </div>
+
+      <!-- Platillo 6 -->
+      <div class="menu-card">
+        <div class="img-placeholder">🥗</div>
+        <div class="card-body">
+          <span class="card-badge">Saludable</span>
+          <h3>Ensalada César con Pollo</h3>
+          <p>Lechuga romana fresca, aderezo César casero, crutones crujientes y pollo a la plancha.</p>
+          <div class="card-price">Desde <strong>$179 MXN</strong></div>
+        </div>
+      </div>
+
+    </div><!-- /menu-grid -->
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       ⭐ SECCIÓN NUEVA: PROMOCIONES ABRIL 2026
+  ════════════════════════════════════════════ -->
+  <div class="promo-abril-bg">
+    <section style="padding-top:0; padding-bottom:0;">
+      <div class="promo-banner">
+        <span class="badge-nuevo">✦ Nuevas Promociones ✦</span>
+        <h2>🌸 Especiales de Abril 2026 🌸</h2>
+        <p>Aprovecha estas ofertas exclusivas disponibles solo este mes en tu VIPS más cercano</p>
+      </div>
+
+      <div class="promo-cards">
+
+        <!-- Promo 1: Menú del Día -->
+        <div class="promo-card" data-emoji="🍽️">
+          <span class="promo-tag tag-rojo">Lunes – Jueves</span>
+          <h3>Menú del Día Completo</h3>
+          <p>Sopa + platillo fuerte + bebida + postre sorpresa. La mejor manera de comer bien sin gastar de más entre semana.</p>
+          <div class="promo-price">Desde <strong>$149 MXN</strong></div>
+          <p class="promo-vigencia">⏰ Vigencia: todo abril 2026 · Lun–Jue</p>
+        </div>
+
+        <!-- Promo 2: Desayuno en pareja -->
+        <div class="promo-card promo-dorado" data-emoji="☕">
+          <span class="promo-tag tag-oro">Desayuno</span>
+          <h3>Desayuno para 2 Personas</h3>
+          <p>Combo especial de abril: 2 platos de huevo al gusto + 2 cafés americanos + pan o tortillas + jugo de naranja natural.</p>
+          <div class="promo-price" style="color:#b5860d">Solo <strong>$199 MXN</strong> (pareja)</div>
+          <p class="promo-vigencia">⏰ Disponible 7am–12pm todo el mes</p>
+        </div>
+
+        <!-- Promo 3: Martes de Tacos -->
+        <div class="promo-card" data-emoji="🌮">
+          <span class="promo-tag tag-rojo">Solo los Martes</span>
+          <h3>Martes de Tacos VIPS</h3>
+          <p>Todos los tacos de la carta a precio especial. Tacos al pastor, suadero, canasta o frijoles. ¡Trae a toda la familia!</p>
+          <div class="promo-price">Desde <strong>$29 MXN</strong> c/u</div>
+          <p class="promo-vigencia">⏰ Todos los martes de abril</p>
+        </div>
+
+        <!-- Promo 4: Niños gratis domingos -->
+        <div class="promo-card promo-verde" data-emoji="👨‍👩‍👧‍👦">
+          <span class="promo-tag tag-verde">Familia</span>
+          <h3>Niños Comen Gratis – Domingos</h3>
+          <p>Los domingos de abril, un niño menor de 10 años come gratis del menú infantil con la compra de un platillo principal de adulto.</p>
+          <div class="promo-price" style="color:#2e7d32">¡Gratis el menú infantil!</div>
+          <p class="promo-vigencia">⏰ Domingos todo el mes · 1 niño por adulto</p>
+        </div>
+
+        <!-- Promo 5: Postre del mes -->
+        <div class="promo-card" data-emoji="🍮">
+          <span class="promo-tag tag-rojo">Postre del Mes</span>
+          <h3>Flan Napolitano de Temporada</h3>
+          <p>El clásico flan napolitano de VIPS con caramelo artesanal. Pide cualquier platillo principal y lleva tu flan a mitad de precio.</p>
+          <div class="promo-price"><strong>50% OFF</strong> en flan c/platillo principal</div>
+          <p class="promo-vigencia">⏰ Durante todo abril 2026</p>
+        </div>
+
+        <!-- Promo 6: Combo cumpleañero -->
+        <div class="promo-card promo-dorado" data-emoji="🎂">
+          <span class="promo-tag tag-oro">Cumpleaños</span>
+          <h3>Combo Cumpleañero Abril</h3>
+          <p>¿Es tu cumpleaños este mes? Preséntate con tu INE y disfruta de una porción de pastel + bebida de cortesía totalmente gratis.</p>
+          <div class="promo-price" style="color:#b5860d">🎁 <strong>¡Pastel + bebida de regalo!</strong></div>
+          <p class="promo-vigencia">⏰ El día de tu cumpleaños · presentar INE</p>
+        </div>
+
+      </div><!-- /promo-cards -->
+
+      <!-- CTA de las promos -->
+      <div style="text-align:center; margin-top:32px;">
+        <a href="https://wa.me/521XXXXXXXXXX?text=Hola!%20Quiero%20info%20sobre%20las%20promociones%20de%20Abril%202026%20🌸"
+           class="btn-rojo" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 32 32" fill="#fff"><path d="M16 .5C7.438.5.5 7.438.5 16c0 2.844.75 5.516 2.063 7.844L.5 31.5l7.875-2.031A15.46 15.46 0 0016 31.5C24.563 31.5 31.5 24.563 31.5 16S24.563.5 16 .5zm7.5 18.406c-.406-.203-2.422-1.188-2.797-1.328-.375-.141-.656-.203-.922.203s-1.063 1.328-1.297 1.594-.484.313-.891.094c-.406-.219-1.719-.625-3.281-2a12.16 12.16 0 01-2.266-2.797c-.234-.406-.025-.625.172-.828.188-.188.406-.484.609-.734.203-.25.266-.406.406-.688.141-.266.063-.5-.031-.703-.094-.203-.922-2.203-1.266-3.016-.328-.797-.672-.672-.922-.688-.234-.016-.5-.016-.766-.016a1.484 1.484 0 00-1.063.5c-.359.391-1.391 1.344-1.391 3.281s1.422 3.797 1.625 4.063c.203.281 2.797 4.234 6.813 5.922 4.031 1.688 4.031 1.125 4.766 1.063.719-.063 2.406-.984 2.75-1.938.328-.953.328-1.766.234-1.938-.094-.172-.375-.281-.781-.484z"/></svg>
+          Consultar Promos por WhatsApp
+        </a>
+      </div>
+
+    </section>
+  </div><!-- /promo-abril-bg -->
+
+  <!-- ═══════════════════════════════════════════
+       SECCIÓN: CÓMO CELEBRAR (PASOS)
+  ════════════════════════════════════════════ -->
+  <div class="celebra-bg">
+    <section style="padding-top:0; padding-bottom:0;">
+      <h2 class="section-title">¿Cómo Celebrar tu Cumpleaños en VIPS?</h2>
+      <div class="divider"><span></span><i>◆</i><span></span></div>
+      <div class="pasos-grid">
+        <div class="paso-card">
+          <div class="paso-num">1</div>
+          <h4>Escríbenos por WhatsApp</h4>
+          <p>Mándanos tu nombre, número de personas y la fecha de tu festejo.</p>
+        </div>
+        <div class="paso-card">
+          <div class="paso-num">2</div>
+          <h4>Recibe tu Menú Personalizado</h4>
+          <p>Te enviamos opciones especiales de menú y los precios del paquete de celebración.</p>
+        </div>
+        <div class="paso-card">
+          <div class="paso-num">3</div>
+          <h4>Haz tu Reservación</h4>
+          <p>Reserva tu mesa con tiempo y nosotros preparamos todo para sorprender al festejado.</p>
+        </div>
+        <div class="paso-card">
+          <div class="paso-num">4</div>
+          <h4>¡Disfruta y Celebra!</h4>
+          <p>Llega, relájate y deja que VIPS haga de tu cumpleaños un recuerdo inolvidable.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECCIÓN: TESTIMONIOS
+  ════════════════════════════════════════════ -->
+  <div class="testimonios-bg">
+    <section style="padding-top:0; padding-bottom:0;">
+      <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
+      <p class="section-subtitle">Miles de familias han celebrado con nosotros</p>
+      <div class="testimonios-grid">
+        <div class="testimonio-card">
+          <div class="stars">★★★★★</div>
+          <p>"Celebramos el cumpleaños de mi mamá y todo estuvo perfecto. El trato del personal fue increíble y la comida deliciosa."</p>
+          <div class="autor">— María González, CDMX</div>
+        </div>
+        <div class="testimonio-card">
+          <div class="stars">★★★★★</div>
+          <p>"Las enchiladas suizas son un clásico que no falla. Y el pastel de chocolate de VIPS simplemente es el mejor."</p>
+          <div class="autor">— Carlos Ramírez, Puebla</div>
+        </div>
+        <div class="testimonio-card">
+          <div class="stars">★★★★★</div>
+          <p>"Reservé para 15 personas y todo salió a la perfección. Muy buen servicio y nos dieron atención personalizada."</p>
+          <div class="autor">— Ana López, Guadalajara</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECCIÓN: PREGUNTAS FRECUENTES
+  ════════════════════════════════════════════ -->
+  <section>
+    <h2 class="section-title">Preguntas Frecuentes</h2>
+    <div class="divider"><span></span><i>◆</i><span></span></div>
+    <ul class="faq-list">
+      <li>
+        <strong>🎂 ¿VIPS tiene paquetes especiales para cumpleaños?</strong>
+        <span>Sí, contamos con paquetes de celebración que incluyen menú, decoración básica y pastel. Escríbenos por WhatsApp para conocer los precios según el número de personas.</span>
+      </li>
+      <li>
+        <strong>📅 ¿Con cuánta anticipación debo reservar?</strong>
+        <span>Recomendamos hacerlo con al menos 2-3 días de anticipación para grupos mayores de 6 personas, así garantizamos tu mesa y los detalles de decoración.</span>
+      </li>
+      <li>
+        <strong>🌸 ¿Las promociones de abril aplican en todas las sucursales?</strong>
+        <span>Las promociones aplican en sucursales participantes. Te confirmamos disponibilidad al momento de tu reservación por WhatsApp.</span>
+      </li>
+      <li>
+        <strong>👶 ¿Hay menú especial para niños?</strong>
+        <span>¡Por supuesto! Contamos con menú infantil y los domingos de abril un niño come gratis con la compra de un platillo de adulto.</span>
+      </li>
+      <li>
+        <strong>💳 ¿Aceptan todas las formas de pago?</strong>
+        <span>Aceptamos efectivo, tarjetas de débito y crédito (Visa, Mastercard, American Express), y pagos digitales como CoDi.</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       CTA FINAL
+  ════════════════════════════════════════════ -->
+  <div class="cta-final">
+    <h2>🎉 ¿Listo para Celebrar? 🎂</h2>
+    <p>No dejes que tu fecha especial pase desapercibida. En VIPS te esperamos con los brazos abiertos para hacer de tu cumpleaños un momento mágico.</p>
+    <div class="btn-group">
+      <a href="https://wa.me/521XXXXXXXXXX?text=Hola%20VIPS!%20Quiero%20reservar%20para%20mi%20cumplea%C3%B1os%20%F0%9F%8E%82"
+         class="btn-wa" target="_blank">
+        <svg width="22" height="22" viewBox="0 0 32 32" fill="#fff"><path d="M16 .5C7.438.5.5 7.438.5 16c0 2.844.75 5.516 2.063 7.844L.5 31.5l7.875-2.031A15.46 15.46 0 0016 31.5C24.563 31.5 31.5 24.563 31.5 16S24.563.5 16 .5zm7.5 18.406c-.406-.203-2.422-1.188-2.797-1.328-.375-.141-.656-.203-.922.203s-1.063 1.328-1.297 1.594-.484.313-.891.094c-.406-.219-1.719-.625-3.281-2a12.16 12.16 0 01-2.266-2.797c-.234-.406-.025-.625.172-.828.188-.188.406-.484.609-.734.203-.25.266-.406.406-.688.141-.266.063-.5-.031-.703-.094-.203-.922-2.203-1.266-3.016-.328-.797-.672-.672-.922-.688-.234-.016-.5-.016-.766-.016a1.484 1.484 0 00-1.063.5c-.359.391-1.391 1.344-1.391 3.281s1.422 3.797 1.625 4.063c.203.281 2.797 4.234 6.813 5.922 4.031 1.688 4.031 1.125 4.766 1.063.719-.063 2.406-.984 2.75-1.938.328-.953.328-1.766.234-1.938-.094-.172-.375-.281-.781-.484z"/></svg>
+        ¡Reservar por WhatsApp!
+      </a>
+      <a href="https://vips.com.mx" class="btn-amarillo" target="_blank">
+        Ver Menú Completo →
+      </a>
+    </div>
+  </div>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <p><strong>VIPS México</strong> · Más de 260 restaurantes en 63 ciudades · © Abril 2026</p>
+    <p style="margin-top:6px;">Promociones sujetas a disponibilidad en sucursales participantes</p>
+  </footer>
+
+</body>
+</html>
